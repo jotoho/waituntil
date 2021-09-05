@@ -36,6 +36,19 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
+}
+
+tasks {
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "16"
+        }
+    }
+}
+
 application {
     // Define the main class for the application.
     mainClass.set("de.jotoho.waituntil.StartKt")
