@@ -1,3 +1,3 @@
 #!/bin/sh
 
-kotlin de.jotoho.waituntil.StartKt $*
+java -jar waituntil.jar $*
