@@ -1,16 +1,13 @@
 package de.jotoho.waituntil
 
-import java.util.Locale;
-import java.util.Locale.LanguageRange;
-import java.text.DateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
+import java.util.Locale
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.TimeZone
-import java.time.Instant;
-import java.time.LocalTime;
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
+import java.time.Instant
+import java.time.LocalTime
+import java.time.LocalDate
+import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
 
 // This file contains the main function and other utility function necessary for interpreting the terminal arguments.
