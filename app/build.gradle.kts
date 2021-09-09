@@ -24,10 +24,7 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
     // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
-    // This dependency is used by the application.
-    implementation("com.google.guava:guava:30.1.1-jre")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
@@ -43,6 +40,11 @@ java {
 
 tasks {
     compileKotlin {
+        kotlinOptions {
+            jvmTarget = "16"
+        }
+    }
+    compileTestKotlin {
         kotlinOptions {
             jvmTarget = "16"
         }
