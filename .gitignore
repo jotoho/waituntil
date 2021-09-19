@@ -38,3 +38,4 @@ build
 # Ignore manual compilation results
 /de/jotoho/
 /META-INF
+/.idea
