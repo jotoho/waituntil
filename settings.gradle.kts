@@ -8,4 +8,3 @@
  */
 
 rootProject.name = "waituntil"
-include("app")

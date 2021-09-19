@@ -1,12 +1,11 @@
 package de.jotoho.waituntil
 
-import java.lang.Math
 import java.time.Instant
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
-import java.util.TimeZone
+import java.util.*
 
 public fun waitUntilTimeStamp(timestamp: ZonedDateTime) {
     Thread.sleep(Math.max(Instant.now().until(timestamp, ChronoUnit.MILLIS), 0))

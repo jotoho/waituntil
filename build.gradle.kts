@@ -6,6 +6,8 @@
  * User Manual available at https://docs.gradle.org/7.2/userguide/building_java_projects.html
  */
 
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.+"
@@ -26,7 +28,7 @@ dependencies {
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
-    // Use the Kotlin JDK 8 standard library.
+    // Use the Kotlin standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
     // Use the Kotlin test library.
@@ -41,7 +43,11 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {
+tasks.test {
+    useJUnitPlatform()
+}
+
+tasks.withType<KotlinCompile>() {
         kotlinOptions.jvmTarget = "17"
 }
 
