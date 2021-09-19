@@ -7,28 +7,30 @@ import kotlin.system.exitProcess
 // See README.md and LICENSE.md for license information
 // Author: Jonas Tobias Hopusch (@jotoho)
 
+
 val langGerman: String = Locale.GERMAN.language
 val applicationOutputLanguage: String = if (Locale.getDefault().language.equals(Locale.GERMAN.language))
-                                    Locale.GERMAN.language
-                                    else Locale.ENGLISH.language
+                                        Locale.GERMAN.language
+                                        else Locale.ENGLISH.language
+
+// For accessing package information
+object DummyClass
 
 fun main(args: Array<String>) {
-    val optionDictionary = mapOf(Pair("-h", "--help"))
+    val optionDictionary = mapOf(Pair("-h", "--help"), Pair("-v", "--version"))
 
     val options = HashSet<String>()
     val words = HashSet<String>()
 
     for (arg in args) {
         if (arg.startsWith("--")) {
-            options.add(arg.substring(startIndex=2))
-        }
-        else if (arg.startsWith('-')) {
+            options.add(arg.substring(startIndex = 2))
+        } else if (arg.startsWith('-')) {
             if (optionDictionary.containsKey(arg))
-                options.add(optionDictionary[arg]!!.substring(startIndex=2))
+                options.add(optionDictionary[arg]!!.substring(startIndex = 2))
             else
                 System.err.println("Short-hand '$arg' does not exist. Ignoring!")
-        }
-        else
+        } else
             words.add(arg)
     }
 
@@ -39,12 +41,18 @@ fun main(args: Array<String>) {
                 println("Help is yet to come. (Not implemented)")
             }
         }
-    }
-    else if (words.size == 1) {
+    } else if (options.contains("version")) {
+        when (applicationOutputLanguage) {
+            langGerman -> {
+                val thisPackage = DummyClass.javaClass.`package`
+                val appVersion = thisPackage.implementationVersion ?: "UNKNOWN"
+                println("waituntil version $appVersion")
+            }
+        }
+    } else if (words.size == 1) {
         val target = calculateAndAnnounceTargetTime(words.iterator().next())
         waitUntilTimeStamp(target)
-    }
-    else {
+    } else {
         when (applicationOutputLanguage) {
             langGerman -> System.err.println("FATAL: Es wurde exact ein nicht-flag Argument erwartet. (${words.size} erhalten)")
             else -> {

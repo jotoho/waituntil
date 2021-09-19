@@ -6,6 +6,9 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+
+    // For generating fat jars
+    id("com.github.johnrengelman.shadow") version "latest.release"
 }
 
 group = "de.jotoho"
@@ -37,6 +40,16 @@ java {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.jar {
+    manifest {
+        attributes(
+            "Implementation-Title" to "waituntil",
+            "Implementation-Version" to "${project.version}",
+            "Main-Class" to "de.jotoho.waituntil.StartKt"
+        )
+    }
 }
 
 tasks.withType<KotlinCompile> {
