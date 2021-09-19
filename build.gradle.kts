@@ -10,7 +10,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "latest.release"
+    kotlin("jvm") version "latest.release"
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
@@ -26,16 +26,16 @@ repositories {
 
 dependencies {
     // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:latest.release"))
+    implementation(platform(kotlin("bom", "latest.release")))
 
     // Use the Kotlin standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:latest.release")
+    implementation(kotlin("stdlib", "latest.release"))
 
     // Use the Kotlin test library.
-    testImplementation("org.jetbrains.kotlin:kotlin-test:latest.release")
+    testImplementation(kotlin("test", "latest.release"))
 
     // Use the Kotlin JUnit integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:latest.release")
+    testImplementation(kotlin("test-junit", "latest.release"))
 }
 
 java {
