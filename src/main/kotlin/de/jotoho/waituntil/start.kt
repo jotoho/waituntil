@@ -23,9 +23,8 @@ fun main(args: Array<String>) {
             options.add(arg.substring(startIndex=2))
         }
         else if (arg.startsWith('-')) {
-            val translation = optionDictionary[arg]
-            if (translation != null)
-                options.add(translation.substring(startIndex=2))
+            if (optionDictionary.containsKey(arg))
+                options.add(optionDictionary[arg]!!.substring(startIndex=2))
             else
                 System.err.println("Short-hand '$arg' does not exist. Ignoring!")
         }
