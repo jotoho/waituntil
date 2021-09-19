@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "de.jotoho"
-version = "0.1.0"
+version = "0.1.1"
 
 repositories {
     // Use Maven Central for resolving dependencies.
