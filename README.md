@@ -1,11 +1,23 @@
-# de.jotoho.waituntil
+# waituntil
 
-This simple tool doubles as a programming exercise for me, as I attempt to learn Kotlin from my perspective as a Java developer and a (hopefully) useful tool for personal use. I will expand this README with details as the project evolves.
+A basic tool for delaying work in the terminal to a specific time. This software was originally
+written in Kotlin and then recently ported to Java.
+
+Usage:
+
+```sh
+java -jar ./waituntil.jar 10:30 ; reboot # Replace reboot with your command
+```
+
+The example above would make the program wait until half past ten AM before exiting and allowing
+the next command to run. The timestamp can be passed in the formats `HH:MM` or `HH:MM:SS` and must
+be in the 24-hour system. Passing dates is not supported but entering a time that has already passed
+will make the software wait until that time on the following day.
 
 ## Copyright / Licensing
 
 ```
-de.jotoho.waituntil - a tool for delaying command execution until the specified time
+waituntil - a tool for delaying command execution until the specified time
 Copyright (C) 2021 Jonas Tobias Hopusch
 
 This program is free software: you can redistribute it and/or modify
