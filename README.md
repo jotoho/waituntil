@@ -1,11 +1,11 @@
-# waituntil
+# de.jotoho.waituntil
 
 This simple tool doubles as a programming exercise for me, as I attempt to learn Kotlin from my perspective as a Java developer and a (hopefully) useful tool for personal use. I will expand this README with details as the project evolves.
 
 ## Copyright / Licensing
 
 ```
-waituntil - a tool for delaying command execution until the specified time
+de.jotoho.waituntil - a tool for delaying command execution until the specified time
 Copyright (C) 2021 Jonas Tobias Hopusch
 
 This program is free software: you can redistribute it and/or modify
