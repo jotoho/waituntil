@@ -36,7 +36,7 @@ public final class Main {
         } else if (options.contains("version")) {
             final var thisPackage = Main.class.getPackage();
             final var appVersion = thisPackage.getImplementationVersion() != null ? thisPackage.getImplementationVersion() :"UNKNOWN";
-            System.out.println("de.jotoho.waituntil version $appVersion");
+            System.out.println("de.jotoho.waituntil version " + appVersion);
         } else if (words.size() == 1) {
             final var target = TimeCalculator.calculateAndAnnounceTargetTime(words.iterator().next());
             Sleep.waitUntilTimeStamp(target);
