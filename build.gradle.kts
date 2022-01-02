@@ -6,8 +6,17 @@ plugins {
     id("com.github.johnrengelman.shadow") version "latest.release"
 }
 
+fun versionBanner(): String {
+    val os = org.apache.commons.io.output.ByteArrayOutputStream()
+    project.exec {
+        commandLine = "git describe --always --dirty".split(" ")
+        standardOutput = os
+    }
+    return String(os.toByteArray()).trim()
+}
+
 group = "de.jotoho"
-version = "0.1.1"
+version = versionBanner()
 
 repositories {
     // Use Maven Central for resolving dependencies.

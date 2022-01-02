@@ -1,6 +1,7 @@
 package de.jotoho.waituntil;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Map;
 
 import static de.jotoho.waituntil.GlobalConf.applicationOutputLanguage;
 
@@ -35,8 +36,19 @@ public final class Main {
             }
         } else if (options.contains("version")) {
             final var thisPackage = Main.class.getPackage();
-            final var appVersion = thisPackage.getImplementationVersion() != null ? thisPackage.getImplementationVersion() :"UNKNOWN";
-            System.out.println("de.jotoho.waituntil version " + appVersion);
+            final var appVersion = thisPackage.getImplementationVersion() != null
+                    ? thisPackage.getImplementationVersion()
+                    : "version unknown";
+            System.out.println("waituntil " + appVersion);
+            System.out.println("""
+
+                    This program is free software: you can redistribute it and/or modify it under the terms of the
+                    GNU General Public License as published by the Free Software Foundation, either version 3 of the
+                    License, or (at your option) any later version.
+
+                    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+                    without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+                    See the GNU General Public License for more details.""");
         } else if (words.size() == 1) {
             final var target = TimeCalculator.calculateAndAnnounceTargetTime(words.iterator().next());
             Sleep.waitUntilTimeStamp(target);
