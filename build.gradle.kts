@@ -6,8 +6,17 @@ plugins {
     id("com.github.johnrengelman.shadow") version "latest.release"
 }
 
+fun versionBanner(): String {
+    val os = org.apache.commons.io.output.ByteArrayOutputStream()
+    project.exec {
+        commandLine = "git describe --always --dirty".split(" ")
+        standardOutput = os
+    }
+    return String(os.toByteArray()).trim()
+}
+
 group = "de.jotoho"
-version = "0.1.1"
+version = versionBanner()
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -22,9 +31,10 @@ java {
 tasks.jar {
     manifest {
         attributes(
-            "Implementation-Title" to "de.jotoho.waituntil",
-            "Implementation-Version" to "${project.version}",
-            "Main-Class" to "de.jotoho.waituntil.Main"
+            "Implementation-Title" to project.name,
+            "Implementation-Version" to project.version,
+            "Main-Class" to "de.jotoho.waituntil.Main",
+            "Main-Module" to "de.jotoho.waituntil.main"
         )
     }
 }
@@ -32,4 +42,5 @@ tasks.jar {
 application {
     // Define the main class for the application.
     mainClass.set("de.jotoho.waituntil.Main")
+    mainModule.set("de.jotoho.waituntil.main")
 }
