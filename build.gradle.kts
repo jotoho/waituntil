@@ -22,9 +22,10 @@ java {
 tasks.jar {
     manifest {
         attributes(
-            "Implementation-Title" to "de.jotoho.waituntil",
-            "Implementation-Version" to "${project.version}",
-            "Main-Class" to "de.jotoho.waituntil.Main"
+            "Implementation-Title" to project.name,
+            "Implementation-Version" to project.version,
+            "Main-Class" to "de.jotoho.waituntil.Main",
+            "Main-Module" to "de.jotoho.waituntil.main"
         )
     }
 }
@@ -32,4 +33,5 @@ tasks.jar {
 application {
     // Define the main class for the application.
     mainClass.set("de.jotoho.waituntil.Main")
+    mainModule.set("de.jotoho.waituntil.main")
 }
