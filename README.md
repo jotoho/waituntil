@@ -32,7 +32,7 @@ In the future, I may also decide to create a mirror for this project on GitHub, 
 
 ```
 waituntil - a tool for delaying command execution until the specified time
-Copyright (C) 2021 Jonas Tobias Hopusch
+Copyright (C) 2022 Jonas Tobias Hopusch
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
