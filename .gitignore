@@ -31,9 +31,8 @@ hs_err_pid*
 build
 
 # Ignore gradle wrapper
-/gradle
-/gradlew
-/gradlew.bat
+gradlew
+gradlew.bat
 
 # Ignore manual compilation results
 /de/jotoho/
