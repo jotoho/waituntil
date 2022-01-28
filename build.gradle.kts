@@ -1,27 +1,30 @@
+import java.io.ByteArrayOutputStream
+import java.io.OutputStream
+
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    java
+}
 
-    // For generating fat jars
-    id("com.github.johnrengelman.shadow") version "latest.release"
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
 }
 
 fun versionBanner(): String {
-    val os = org.apache.commons.io.output.ByteArrayOutputStream()
+    val os = ByteArrayOutputStream()
+    val devNull = OutputStream.nullOutputStream()
     project.exec {
-        commandLine = "git describe --always --dirty".split(" ")
+        commandLine = "git describe --tags --always --dirty --abbrev".split(" ")
         standardOutput = os
+        errorOutput = devNull
     }
     return String(os.toByteArray()).trim()
 }
 
 group = "de.jotoho"
 version = versionBanner()
-
-repositories {
-    // Use Maven Central for resolving dependencies.
-    mavenCentral()
-}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
