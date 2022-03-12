@@ -20,11 +20,10 @@ dependencies {
 
 fun versionBanner(): String {
     val os = ByteArrayOutputStream()
-    val devNull = OutputStream.nullOutputStream()
     project.exec {
         commandLine = "git describe --tags --always --dirty --abbrev".split(" ")
         standardOutput = os
-        errorOutput = devNull
+        errorOutput = OutputStream.nullOutputStream()
     }
     return String(os.toByteArray()).trim()
 }
