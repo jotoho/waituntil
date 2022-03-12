@@ -12,6 +12,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation(group="org.apache", name="commons-cli", version="1.5.0")
+}
+
 fun versionBanner(): String {
     val os = ByteArrayOutputStream()
     val devNull = OutputStream.nullOutputStream()
