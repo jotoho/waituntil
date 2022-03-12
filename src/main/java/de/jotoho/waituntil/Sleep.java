@@ -23,9 +23,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
-
-import java.lang.Math;
+import java.util.TimeZone;
 
 public final class Sleep {
     public static void waitUntilTimeStamp(ZonedDateTime timestamp) {
@@ -35,9 +33,9 @@ public final class Sleep {
         }
 
         final String formattedTimeStamp =
-                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)
-                        .withZone(TimeZone.getDefault().toZoneId())
-                        .format(Instant.now());
+            DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)
+                .withZone(TimeZone.getDefault().toZoneId())
+                .format(Instant.now());
 
         final String msg = switch (GlobalConf.applicationOutputLanguage) {
             case GlobalConf.langGerman -> "Erfolgreich bis %s gewartet!";
