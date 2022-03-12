@@ -25,6 +25,8 @@ import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.TimeZone;
 
+import static java.lang.System.Logger.Level;
+
 public final class Sleep {
     public static void waitUntilTimeStamp(ZonedDateTime timestamp) {
         try {
@@ -43,6 +45,6 @@ public final class Sleep {
         };
 
         final String msgWithData = msg.formatted(formattedTimeStamp);
-        System.err.println(msgWithData);
+        System.getLogger("sleep").log(Level.INFO, msgWithData);
     }
 }
