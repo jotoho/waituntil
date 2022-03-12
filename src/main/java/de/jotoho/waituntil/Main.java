@@ -22,12 +22,14 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.ParseException;
 
 import static de.jotoho.waituntil.GlobalConf.applicationOutputLanguage;
+import static java.lang.System.Logger.Level;
 
 // This file contains the main function and other utility function necessary for interpreting the terminal arguments.
 // See README.md and LICENSE.md for license information
 // Author: Jonas Tobias Hopusch (@jotoho)
 
 public final class Main {
+    private static final System.Logger logger = System.getLogger("main");
 
     private static void printVersionInformation() {
         final var thisPackage = Main.class.getPackage();
@@ -47,8 +49,8 @@ public final class Main {
 
     private static void printHelpInformation() {
         switch (applicationOutputLanguage) {
-            case GlobalConf.langGerman -> System.out.println("Hilfe kommt noch. (Nicht implementiert)");
-            default -> System.out.println("Help is yet to come. (Not implemented)");
+            case GlobalConf.langGerman -> logger.log(Level.ERROR, "Hilfe kommt noch. (Nicht implementiert)");
+            default -> logger.log(Level.ERROR, "Help is yet to come. (Not implemented)");
         }
     }
 
@@ -68,17 +70,18 @@ public final class Main {
                 printVersionInformation();
             } else if (userData.length == 0) {
                 switch (applicationOutputLanguage) {
-                    case GlobalConf.langGerman -> System.err.println("FATAL: " +
+                    case GlobalConf.langGerman -> logger.log(Level.ERROR,
                         "Es wurde keine Uhrzeit angegeben.");
-                    default -> System.err.println("FATAL: No target time was " +
+                    default -> logger.log(Level.ERROR, "No target time" +
+                        " was " +
                         "provided.");
                 }
                 System.exit(1);
             } else if (userData.length > 1) {
                 switch (applicationOutputLanguage) {
-                    case GlobalConf.langGerman -> System.err.println("FATAL: " +
+                    case GlobalConf.langGerman -> logger.log(Level.ERROR,
                         "Zu viele Argumente wurden angegeben.");
-                    default -> System.err.println("FATAL: Too many arguments " +
+                    default -> logger.log(Level.ERROR, "Too many arguments " +
                         "provided.");
                 }
                 System.exit(1);
@@ -88,7 +91,7 @@ public final class Main {
                 Sleep.waitUntilTimeStamp(target);
             }
         } catch (final ParseException e) {
-            System.getLogger("main").log(System.Logger.Level.ERROR, "Parsing " +
+            System.getLogger("main").log(Level.ERROR, "Parsing " +
                 "of arguments failed and the program cannot continue.", e);
             System.exit(1);
         }

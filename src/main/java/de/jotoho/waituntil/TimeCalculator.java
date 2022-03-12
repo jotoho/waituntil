@@ -25,6 +25,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.*;
+import static java.lang.System.Logger.Level;
 
 public final class TimeCalculator {
 
@@ -51,7 +52,7 @@ public final class TimeCalculator {
                                             .formatted(formattedTimeStamp);
             default -> "WaitUntil will suspend until %s".formatted(formattedTimeStamp);
         };
-        System.out.println(msg);
+        System.getLogger("timecalculator").log(Level.INFO, msg);
 
         return userTimeInputFinal;
     }
