@@ -55,14 +55,15 @@ public final class Main {
     }
 
     public static void main(final String[] args) {
+        final var appOptions = new AppOptions();
         try {
-            final var parsedArguments = DefaultParser.builder().setStripLeadingAndTrailingQuotes(true).build().parse(AppOptions.getOptions(), args);
+            final var parsedArguments = DefaultParser.builder().setStripLeadingAndTrailingQuotes(true).build().parse(appOptions.options, args);
 
             final var userData = parsedArguments.getArgs();
 
-            if (parsedArguments.hasOption(AppOptions.help)) {
+            if (parsedArguments.hasOption(appOptions.help)) {
                 printHelpInformation();
-            } else if (parsedArguments.hasOption(AppOptions.version)) {
+            } else if (parsedArguments.hasOption(appOptions.version)) {
                 printVersionInformation();
             } else if (userData.length == 0) {
                 switch (applicationOutputLanguage) {
