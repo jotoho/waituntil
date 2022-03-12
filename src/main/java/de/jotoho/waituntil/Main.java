@@ -68,13 +68,13 @@ public final class Main {
             } else if (userData.length == 0) {
                 switch (applicationOutputLanguage) {
                     case GlobalConf.langGerman -> logger.log(Level.ERROR, "Es wurde keine Uhrzeit angegeben.");
-                    default -> logger.log(Level.ERROR, "No target time" + " was " + "provided.");
+                    default -> logger.log(Level.ERROR, "No target time was provided.");
                 }
                 System.exit(1);
             } else if (userData.length > 1) {
                 switch (applicationOutputLanguage) {
                     case GlobalConf.langGerman -> logger.log(Level.ERROR, "Zu viele Argumente wurden angegeben.");
-                    default -> logger.log(Level.ERROR, "Too many arguments " + "provided.");
+                    default -> logger.log(Level.ERROR, "Too many arguments provided.");
                 }
                 System.exit(1);
             } else {
@@ -82,7 +82,7 @@ public final class Main {
                 Sleep.waitUntilTimeStamp(target);
             }
         } catch (final ParseException e) {
-            System.getLogger("main").log(Level.ERROR, "Parsing " + "of arguments failed and the program cannot continue.", e);
+            System.getLogger("main").log(Level.ERROR, "Parsing of arguments failed and the program cannot continue.", e);
             System.exit(1);
         }
     }
