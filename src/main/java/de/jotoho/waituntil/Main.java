@@ -67,16 +67,18 @@ public final class Main {
                 printVersionInformation();
             } else if (userData.length == 0) {
                 switch (applicationOutputLanguage) {
-                    case GlobalConf.langGerman -> System.err.println("FATAL: Es wurde exact ein nicht-flag Argument erwartet. (" + userData.length + " erhalten)");
-                    default -> System.err.println("FATAL: Expected one non-flag argument. (Got " + userData.length + ")");
+                    case GlobalConf.langGerman -> System.err.println("FATAL: " +
+                        "Es wurde keine Uhrzeit angegeben.");
+                    default -> System.err.println("FATAL: No target time was " +
+                        "provided.");
                 }
                 System.exit(1);
             } else if (userData.length > 1) {
                 switch (applicationOutputLanguage) {
                     case GlobalConf.langGerman -> System.err.println("FATAL: " +
-                        "Es wurde exact ein nicht-flag Argument erwartet. (" + userData.length + " erhalten)");
-                    default -> System.err.println("FATAL: Expected one " +
-                        "non-flag argument. (Got " + userData.length + ")");
+                        "Zu viele Argumente wurden angegeben.");
+                    default -> System.err.println("FATAL: Too many arguments " +
+                        "provided.");
                 }
                 System.exit(1);
             } else {
