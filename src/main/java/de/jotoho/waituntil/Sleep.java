@@ -30,14 +30,19 @@ import static java.lang.System.Logger.Level;
 public final class Sleep {
     public static void waitUntilTimeStamp(ZonedDateTime timestamp) {
         try {
-            Thread.sleep(Math.max(0, Instant.now().until(timestamp, ChronoUnit.MILLIS)));
+            Thread.sleep(Math.max(0,
+                                  Instant
+                                      .now()
+                                      .until(timestamp, ChronoUnit.MILLIS)));
         } catch (final InterruptedException ignored) {
         }
 
-        final String formattedTimeStamp =
-            DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG)
-                .withZone(TimeZone.getDefault().toZoneId())
-                .format(Instant.now());
+        final String formattedTimeStamp = DateTimeFormatter
+            .ofLocalizedDateTime(FormatStyle.LONG)
+            .withZone(TimeZone
+                          .getDefault()
+                          .toZoneId())
+            .format(Instant.now());
 
         final String msg = switch (GlobalConf.applicationOutputLanguage) {
             case GlobalConf.langGerman -> "Erfolgreich bis %s gewartet!";
@@ -45,6 +50,8 @@ public final class Sleep {
         };
 
         final String msgWithData = msg.formatted(formattedTimeStamp);
-        System.getLogger("sleep").log(Level.INFO, msgWithData);
+        System
+            .getLogger("sleep")
+            .log(Level.INFO, msgWithData);
     }
 }

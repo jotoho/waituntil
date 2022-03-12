@@ -37,5 +37,6 @@ gradlew.bat
 # Ignore manual compilation results
 /de/jotoho/
 /META-INF
-/.idea
+/.idea/*
+!/.idea/codeStyles/
 *.zst

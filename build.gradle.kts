@@ -6,7 +6,7 @@ plugins {
     application
     java
 
-    id ("com.github.johnrengelman.shadow") version "7.1.2"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 repositories {
@@ -15,7 +15,9 @@ repositories {
 }
 
 dependencies {
-    implementation(group="commons-cli", name="commons-cli", version="1.5.0")
+    implementation(group = "commons-cli",
+                   name = "commons-cli",
+                   version = "1.5.0")
 }
 
 fun versionBanner(): String {
@@ -38,10 +40,9 @@ java {
 
 tasks.jar {
     manifest {
-        attributes(
-            "Implementation-Title" to project.name,
-            "Implementation-Version" to project.version,
-            "Main-Class" to "de.jotoho.waituntil.Main"
+        attributes("Implementation-Title" to project.name,
+                   "Implementation-Version" to project.version,
+                   "Main-Class" to "de.jotoho.waituntil.Main"
             //"Main-Module" to "de.jotoho.waituntil.main"
         )
     }
