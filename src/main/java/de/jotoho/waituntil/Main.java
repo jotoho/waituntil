@@ -34,6 +34,7 @@ public final class Main {
         final var appVersion = thisPackage.getImplementationVersion() != null ? thisPackage.getImplementationVersion() : "version unknown";
         System.out.println("waituntil " + appVersion);
         System.out.println("""
+                Project Repository: https://gitea.jotoho.de/jotoho/waituntil
 
                 This program is free software: you can redistribute it and/or modify it under the terms of the
                 GNU General Public License as published by the Free Software Foundation, either version 3 of the
