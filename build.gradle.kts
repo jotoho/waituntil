@@ -15,9 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation(group = "commons-cli",
-                   name = "commons-cli",
-                   version = "1.5.0")
+    implementation(group = "commons-cli", name = "commons-cli", version = "1.5.0")
 }
 
 fun versionBanner(): String {

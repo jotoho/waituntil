@@ -36,11 +36,9 @@ public final class Main {
 
     private static void printVersionInformation() {
         final var thisPackage = Main.class.getPackage();
-        final var
-            appVersion =
-            thisPackage.getImplementationVersion() != null
-            ? thisPackage.getImplementationVersion()
-            : "version unknown";
+        final var appVersion = thisPackage.getImplementationVersion() != null
+                               ? thisPackage.getImplementationVersion()
+                               : "version unknown";
 
         System.out.println("waituntil " + appVersion);
         System.out.println("""
@@ -58,23 +56,18 @@ public final class Main {
     private static void printHelpInformation() {
         switch (applicationOutputLanguage) {
             case GlobalConf.langGerman -> logger.log(Level.ERROR,
-                                                     "Hilfe " +
-                                                     "kommt noch. (Nicht " +
+                                                     "Hilfe kommt noch. (Nicht " +
                                                      "implementiert)");
-            default -> logger.log(Level.ERROR,
-                                  "Help is yet to come. (Not " +
-                                  "implemented)");
+            default -> logger.log(Level.ERROR, "Help is yet to come. (Not implemented)");
         }
     }
 
-    private static CommandLine parseArgs(final Options options,
-                                         final String[] args)
+    private static CommandLine parseArgs(final Options options, final String[] args)
         throws ParseException {
-        return DefaultParser
-            .builder()
-            .setStripLeadingAndTrailingQuotes(true)
-            .build()
-            .parse(options, args);
+        return DefaultParser.builder()
+                            .setStripLeadingAndTrailingQuotes(true)
+                            .build()
+                            .parse(options, args);
     }
 
     public synchronized static void main(final String[] args) {
@@ -94,38 +87,28 @@ public final class Main {
             } else if (userData.length == 0) {
                 switch (applicationOutputLanguage) {
                     case GlobalConf.langGerman -> logger.log(Level.ERROR,
-                                                             "Es" +
-                                                             " wurde keine " +
-                                                             "Uhrzeit " +
+                                                             "Es wurde keine Uhrzeit " +
                                                              "angegeben.");
-                    default -> logger.log(Level.ERROR,
-                                          "No target time was " + "provided.");
+                    default -> logger.log(Level.ERROR, "No target time was provided.");
                 }
                 System.exit(1);
             } else if (userData.length > 1) {
                 switch (applicationOutputLanguage) {
                     case GlobalConf.langGerman -> logger.log(Level.ERROR,
-                                                             "Zu" + " viele " +
-                                                             "Argumente " +
-                                                             "wurden " +
-                                                             "angegeben.");
-                    default -> logger.log(Level.ERROR,
-                                          "Too many arguments " + "provided.");
+                                                             "Zu viele Argumente " +
+                                                             "wurden angegeben.");
+                    default -> logger.log(Level.ERROR, "Too many arguments provided.");
                 }
                 System.exit(1);
             } else {
-                final var
-                    target =
-                    TimeCalculator.calculateAndAnnounceTargetTime(userData[0]);
+                final var target = TimeCalculator.calculateAndAnnounceTargetTime(userData[0]);
                 Sleep.waitUntilTimeStamp(target);
             }
         } catch (final ParseException e) {
-            System
-                .getLogger("main")
-                .log(Level.ERROR,
-                     "Parsing of arguments " +
-                     "failed and the program cannot " + "continue.",
-                     e);
+            System.getLogger("main")
+                  .log(Level.ERROR,
+                       "Parsing of arguments failed and the program cannot continue.",
+                       e);
             System.exit(1);
         }
     }

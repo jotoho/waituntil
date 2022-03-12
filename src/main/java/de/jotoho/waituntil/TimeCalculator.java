@@ -34,29 +34,24 @@ public final class TimeCalculator {
         final var userTimeInputRelative = LocalTime.parse(userTimeInputRaw);
         final var userTimeInputAbsolute = ZonedDateTime.of(LocalDate.now(),
                                                            userTimeInputRelative,
-                                                           TimeZone
-                                                               .getDefault()
-                                                               .toZoneId());
+                                                           TimeZone.getDefault()
+                                                                   .toZoneId());
 
-        final var userTimeInputFinal = (Instant
-            .now()
-            .isBefore(userTimeInputAbsolute.toInstant()))
+        final var userTimeInputFinal = (Instant.now()
+                                               .isBefore(userTimeInputAbsolute.toInstant()))
                                        ? userTimeInputAbsolute
                                        : userTimeInputAbsolute.plusDays(1);
 
-        final var formattedTimeStamp = userTimeInputFinal.format(
-            DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG));
+        final var formattedTimeStamp =
+            userTimeInputFinal.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG));
 
         final String msg = switch (GlobalConf.applicationOutputLanguage) {
-            case GlobalConf.langGerman -> ("Dieses Program wird bis zum %s " +
-                                           "warten.").formatted(
+            case GlobalConf.langGerman -> ("Dieses Program wird bis zum %s warten.").formatted(
                 formattedTimeStamp);
-            default -> "WaitUntil will suspend until %s".formatted(
-                formattedTimeStamp);
+            default -> "WaitUntil will suspend until %s".formatted(formattedTimeStamp);
         };
-        System
-            .getLogger("timecalculator")
-            .log(Level.INFO, msg);
+        System.getLogger("timecalculator")
+              .log(Level.INFO, msg);
 
         return userTimeInputFinal;
     }
